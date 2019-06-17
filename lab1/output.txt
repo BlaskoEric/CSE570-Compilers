@@ -1,0 +1,45 @@
+[2J[HSigma = {a,b}*
+L1 = (a|b)*abb 
+L2 = (a|b)*baa 
+Enter a string consisting of Σ to see if it is in L1 or L2 
+Enter 'exit' to quit 
+
+abb
+1-3 abb is in L1
+ "abb" is in L1 
+
+baa
+1-3 baa is in L2
+ "baa" is in L2 
+
+aabbaa
+1-4 aabb is in L1
+ 2-4 abb is in L1
+ 1-6 aabbaa is in L2
+ 2-6 abbaa is in L2
+ 3-6 bbaa is in L2
+ 4-6 baa is in L2
+ "aabbaa" is in L2 
+
+ababababaazzzzzzzzzzoioioiabb
+1-10 ababababaa is in L2
+ 2-10 babababaa is in L2
+ 3-10 abababaa is in L2
+ 4-10 bababaa is in L2
+ 5-10 ababaa is in L2
+ 6-10 babaa is in L2
+ 7-10 abaa is in L2
+ 8-10 baa is in L2
+ 27-29 abb is in L1
+ "ababababaazzzzzzzzzzoioioiabb" is not in any language 
+
+abababaa zzzzqw abb
+1-8 abababaa is in L2
+ 2-8 bababaa is in L2
+ 3-8 ababaa is in L2
+ 4-8 babaa is in L2
+ 5-8 abaa is in L2
+ 6-8 baa is in L2
+ 17-19 abb is in L1
+ "abababaa zzzzqw abb" is not in any language 
+

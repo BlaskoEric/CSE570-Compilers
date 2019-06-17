@@ -1,0 +1,97 @@
+Script started on 2019-03-13 21:18:50-07:00
+]0;005670557@csusb.edu@csevnc:~/cse570/lab5[005670557@csusb.edu@csevnc lab5]$ make
+make: Warning: File 'actionGoto' has modification time 10 s in the future
+make: 'actionGoto' is up to date.
+make: warning:  Clock skew detected.  Your build may be incomplete.
+]0;005670557@csusb.edu@csevnc:~/cse570/lab5[005670557@csusb.edu@csevnc lab5]$ ./c[KactionGoto
+Augmented Grammar
+'->S
+S->E
+E->E+T
+E->T
+T->T*F
+T->F
+F->i
+F->(E)
+
+First Sets
+First(S) = {(,i}
+First(E) = {(,i}
+First(T) = {(,i}
+First(F) = {(,i}
+
+Follow Sets
+Follow(S) = {$}
+Follow(E) = {$,),+}
+Follow(T) = {$,),*,+}
+Follow(F) = {$,),*,+}
+
+Closures and Gotos
+I0:
+	'->.S                goto(I1,S)
+	S->.E                goto(I2,E)
+	E->.E+T             
+	E->.T                goto(I3,T)
+	T->.T*F             
+	T->.F                goto(I4,F)
+	F->.i                goto(I5,i)
+	F->.(E)              goto(I6,()
+I1:
+	'->S.               
+I2:
+	S->E.               
+	E->E.+T              goto(I7,+)
+I3:
+	E->T.               
+	T->T.*F              goto(I8,*)
+I4:
+	T->F.               
+I5:
+	F->i.               
+I6:
+	F->(.E)              goto(I9,E)
+	E->.E+T             
+	E->.T                goto(I3,T)
+	T->.T*F             
+	T->.F                goto(I4,F)
+	F->.i                goto(I5,i)
+	F->.(E)              goto(I6,()
+I7:
+	E->E+.T              goto(I10,T)
+	T->.T*F             
+	T->.F                goto(I4,F)
+	F->.i                goto(I5,i)
+	F->.(E)              goto(I6,()
+I8:
+	T->T*.F              goto(I11,F)
+	F->.i                goto(I5,i)
+	F->.(E)              goto(I6,()
+I9:
+	F->(E.)              goto(I12,))
+	E->E.+T              goto(I7,+)
+I10:
+	E->E+T.             
+	T->T.*F              goto(I8,*)
+I11:
+	T->T*F.             
+I12:
+	F->(E).             
+				ACTION				GOTO
+
+0State	 | $	 | (	 | )	 | *	 | +	 | i	 || E	 || F	 || S	 || T	
+I- 0	 |  	 |  s6	 |  	 |  	 |  	 |  s5	 ||  2	 ||  4	 ||  1	 ||  3	
+I- 1	 |  	 |  	 |  	 |  	 |  	 |  	 ||  	 ||  	 ||  	 ||  	
+I- 2	 |  acc	 |  	 |  	 |  	 |  s7	 |  	 ||  	 ||  	 ||  	 ||  	
+I- 3	 |  r3	 |  	 |  r3	 |  s8	 |  r3	 |  	 ||  	 ||  	 ||  	 ||  	
+I- 4	 |  r5	 |  	 |  r5	 |  r5	 |  r5	 |  	 ||  	 ||  	 ||  	 ||  	
+I- 5	 |  r6	 |  	 |  r6	 |  r6	 |  r6	 |  	 ||  	 ||  	 ||  	 ||  	
+I- 6	 |  	 |  s6	 |  	 |  	 |  	 |  s5	 ||  9	 ||  4	 ||  	 ||  3	
+I- 7	 |  	 |  s6	 |  	 |  	 |  	 |  s5	 ||  	 ||  4	 ||  	 ||  10	
+I- 8	 |  	 |  s6	 |  	 |  	 |  	 |  s5	 ||  	 ||  11	 ||  	 ||  	
+I- 9	 |  	 |  	 |  s12	 |  	 |  s7	 |  	 ||  	 ||  	 ||  	 ||  	
+I-10	 |  r2	 |  	 |  r2	 |  s8	 |  r2	 |  	 ||  	 ||  	 ||  	 ||  	
+I-11	 |  r4	 |  	 |  r4	 |  r4	 |  r4	 |  	 ||  	 ||  	 ||  	 ||  	
+I-12	 |  r7	 |  	 |  r7	 |  r7	 |  r7	 |  	 ||  	 ||  	 ||  	 ||  	
+]0;005670557@csusb.edu@csevnc:~/cse570/lab5[005670557@csusb.edu@csevnc lab5]$ exit
+
+Script done on 2019-03-13 21:19:03-07:00

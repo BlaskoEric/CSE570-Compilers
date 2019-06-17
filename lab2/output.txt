@@ -1,0 +1,30 @@
+Grammar
+x
+y
+z
++
+*
+(
+)
+$
+E->TD
+D->+TD|e
+T->FU
+U->*FU|e
+F->(E)|I
+I->x|y|z
+$
+
+First(E) = {(,x,y,z}
+First(D) = {+,e}
+First(T) = {(,x,y,z}
+First(U) = {*,e}
+First(F) = {(,x,y,z}
+First(I) = {x,y,z}
+
+Follow(E) = {$,)}
+Follow(D) = {)}
+Follow(T) = {),+}
+Follow(U) = {),+}
+Follow(F) = {),*,+}
+Follow(I) = {),*,+}

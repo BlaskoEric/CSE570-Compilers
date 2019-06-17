@@ -1,0 +1,1882 @@
+Terminals unused in grammar
+
+   '|'
+   '&'
+   '%'
+
+
+Grammar
+
+    0 $accept: list $end
+
+    1 list: %empty
+    2     | list stat '\n'
+    3     | list error '\n'
+
+    4 stat: expr
+    5     | LETTER '=' expr
+
+    6 expr: expr '+' expr
+    7     | expr '-' expr
+    8     | expr '*' expr
+    9     | '(' expr ')'
+   10     | '-' expr
+   11     | '+' expr
+   12     | '*' expr
+   13     | '/' expr
+   14     | SIN '(' expr ')'
+   15     | ASIN '(' expr ')'
+   16     | SINH '(' expr ')'
+   17     | COS '(' expr ')'
+   18     | ACOS '(' expr ')'
+   19     | COSH '(' expr ')'
+   20     | TAN '(' expr ')'
+   21     | ATAN '(' expr ')'
+   22     | TANH '(' expr ')'
+   23     | EXP '(' expr ')'
+   24     | CEIL '(' expr ')'
+   25     | FLOOR '(' expr ')'
+   26     | ROUND '(' expr ')'
+   27     | LOG '(' expr ')'
+   28     | LN '(' expr ')'
+   29     | SQRT '(' expr ')'
+   30     | SQURE '(' expr ')'
+   31     | CUBE '(' expr ')'
+   32     | expr '/' expr
+   33     | LETTER
+   34     | number
+   35     | EXIT
+
+   36 number: DIGIT
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+'\n' (10) 2 3
+'%' (37)
+'&' (38)
+'(' (40) 9 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+')' (41) 9 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31
+'*' (42) 8 12
+'+' (43) 6 11
+'-' (45) 7 10
+'/' (47) 13 32
+'=' (61) 5
+'|' (124)
+error (256) 3
+DIGIT (258) 36
+LETTER (259) 5 33
+SIN (260) 14
+ASIN (261) 15
+SINH (262) 16
+COS (263) 17
+ACOS (264) 18
+COSH (265) 19
+TAN (266) 20
+ATAN (267) 21
+TANH (268) 22
+LOG (269) 27
+LN (270) 28
+SQRT (271) 29
+SQURE (272) 30
+CUBE (273) 31
+EXIT (274) 35
+EXP (275) 23
+CEIL (276) 24
+FLOOR (277) 25
+ROUND (278) 26
+
+
+Nonterminals, with rules where they appear
+
+$accept (35)
+    on left: 0
+list (36)
+    on left: 1 2 3, on right: 0 2 3
+stat (37)
+    on left: 4 5, on right: 2
+expr (38)
+    on left: 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+    26 27 28 29 30 31 32 33 34 35, on right: 4 5 6 7 8 9 10 11 12 13
+    14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32
+number (39)
+    on left: 36, on right: 34
+
+
+State 0
+
+    0 $accept: . list $end
+
+    $default  reduce using rule 1 (list)
+
+    list  go to state 1
+
+
+State 1
+
+    0 $accept: list . $end
+    2 list: list . stat '\n'
+    3     | list . error '\n'
+
+    $end    shift, and go to state 2
+    error   shift, and go to state 3
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 5
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    stat    go to state 30
+    expr    go to state 31
+    number  go to state 32
+
+
+State 2
+
+    0 $accept: list $end .
+
+    $default  accept
+
+
+State 3
+
+    3 list: list error . '\n'
+
+    '\n'  shift, and go to state 33
+
+
+State 4
+
+   36 number: DIGIT .
+
+    $default  reduce using rule 36 (number)
+
+
+State 5
+
+    5 stat: LETTER . '=' expr
+   33 expr: LETTER .
+
+    '='  shift, and go to state 34
+
+    $default  reduce using rule 33 (expr)
+
+
+State 6
+
+   11 expr: '+' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 36
+    number  go to state 32
+
+
+State 7
+
+   10 expr: '-' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 37
+    number  go to state 32
+
+
+State 8
+
+   12 expr: '*' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 38
+    number  go to state 32
+
+
+State 9
+
+   13 expr: '/' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 39
+    number  go to state 32
+
+
+State 10
+
+   14 expr: SIN . '(' expr ')'
+
+    '('  shift, and go to state 40
+
+
+State 11
+
+   15 expr: ASIN . '(' expr ')'
+
+    '('  shift, and go to state 41
+
+
+State 12
+
+   16 expr: SINH . '(' expr ')'
+
+    '('  shift, and go to state 42
+
+
+State 13
+
+   17 expr: COS . '(' expr ')'
+
+    '('  shift, and go to state 43
+
+
+State 14
+
+   18 expr: ACOS . '(' expr ')'
+
+    '('  shift, and go to state 44
+
+
+State 15
+
+   19 expr: COSH . '(' expr ')'
+
+    '('  shift, and go to state 45
+
+
+State 16
+
+   20 expr: TAN . '(' expr ')'
+
+    '('  shift, and go to state 46
+
+
+State 17
+
+   21 expr: ATAN . '(' expr ')'
+
+    '('  shift, and go to state 47
+
+
+State 18
+
+   22 expr: TANH . '(' expr ')'
+
+    '('  shift, and go to state 48
+
+
+State 19
+
+   27 expr: LOG . '(' expr ')'
+
+    '('  shift, and go to state 49
+
+
+State 20
+
+   28 expr: LN . '(' expr ')'
+
+    '('  shift, and go to state 50
+
+
+State 21
+
+   29 expr: SQRT . '(' expr ')'
+
+    '('  shift, and go to state 51
+
+
+State 22
+
+   30 expr: SQURE . '(' expr ')'
+
+    '('  shift, and go to state 52
+
+
+State 23
+
+   31 expr: CUBE . '(' expr ')'
+
+    '('  shift, and go to state 53
+
+
+State 24
+
+   35 expr: EXIT .
+
+    $default  reduce using rule 35 (expr)
+
+
+State 25
+
+   23 expr: EXP . '(' expr ')'
+
+    '('  shift, and go to state 54
+
+
+State 26
+
+   24 expr: CEIL . '(' expr ')'
+
+    '('  shift, and go to state 55
+
+
+State 27
+
+   25 expr: FLOOR . '(' expr ')'
+
+    '('  shift, and go to state 56
+
+
+State 28
+
+   26 expr: ROUND . '(' expr ')'
+
+    '('  shift, and go to state 57
+
+
+State 29
+
+    9 expr: '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 58
+    number  go to state 32
+
+
+State 30
+
+    2 list: list stat . '\n'
+
+    '\n'  shift, and go to state 59
+
+
+State 31
+
+    4 stat: expr .
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+
+    $default  reduce using rule 4 (stat)
+
+
+State 32
+
+   34 expr: number .
+
+    $default  reduce using rule 34 (expr)
+
+
+State 33
+
+    3 list: list error '\n' .
+
+    $default  reduce using rule 3 (list)
+
+
+State 34
+
+    5 stat: LETTER '=' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 64
+    number  go to state 32
+
+
+State 35
+
+   33 expr: LETTER .
+
+    $default  reduce using rule 33 (expr)
+
+
+State 36
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   11     | '+' expr .
+   32     | expr . '/' expr
+
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+
+    $default  reduce using rule 11 (expr)
+
+
+State 37
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   10     | '-' expr .
+   32     | expr . '/' expr
+
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+
+    $default  reduce using rule 10 (expr)
+
+
+State 38
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   12     | '*' expr .
+   32     | expr . '/' expr
+
+    $default  reduce using rule 12 (expr)
+
+
+State 39
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   13     | '/' expr .
+   32     | expr . '/' expr
+
+    $default  reduce using rule 13 (expr)
+
+
+State 40
+
+   14 expr: SIN '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 65
+    number  go to state 32
+
+
+State 41
+
+   15 expr: ASIN '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 66
+    number  go to state 32
+
+
+State 42
+
+   16 expr: SINH '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 67
+    number  go to state 32
+
+
+State 43
+
+   17 expr: COS '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 68
+    number  go to state 32
+
+
+State 44
+
+   18 expr: ACOS '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 69
+    number  go to state 32
+
+
+State 45
+
+   19 expr: COSH '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 70
+    number  go to state 32
+
+
+State 46
+
+   20 expr: TAN '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 71
+    number  go to state 32
+
+
+State 47
+
+   21 expr: ATAN '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 72
+    number  go to state 32
+
+
+State 48
+
+   22 expr: TANH '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 73
+    number  go to state 32
+
+
+State 49
+
+   27 expr: LOG '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 74
+    number  go to state 32
+
+
+State 50
+
+   28 expr: LN '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 75
+    number  go to state 32
+
+
+State 51
+
+   29 expr: SQRT '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 76
+    number  go to state 32
+
+
+State 52
+
+   30 expr: SQURE '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 77
+    number  go to state 32
+
+
+State 53
+
+   31 expr: CUBE '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 78
+    number  go to state 32
+
+
+State 54
+
+   23 expr: EXP '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 79
+    number  go to state 32
+
+
+State 55
+
+   24 expr: CEIL '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 80
+    number  go to state 32
+
+
+State 56
+
+   25 expr: FLOOR '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 81
+    number  go to state 32
+
+
+State 57
+
+   26 expr: ROUND '(' . expr ')'
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 82
+    number  go to state 32
+
+
+State 58
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+    9     | '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 83
+
+
+State 59
+
+    2 list: list stat '\n' .
+
+    $default  reduce using rule 2 (list)
+
+
+State 60
+
+    6 expr: expr '+' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 84
+    number  go to state 32
+
+
+State 61
+
+    7 expr: expr '-' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 85
+    number  go to state 32
+
+
+State 62
+
+    8 expr: expr '*' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 86
+    number  go to state 32
+
+
+State 63
+
+   32 expr: expr '/' . expr
+
+    DIGIT   shift, and go to state 4
+    LETTER  shift, and go to state 35
+    '+'     shift, and go to state 6
+    '-'     shift, and go to state 7
+    '*'     shift, and go to state 8
+    '/'     shift, and go to state 9
+    SIN     shift, and go to state 10
+    ASIN    shift, and go to state 11
+    SINH    shift, and go to state 12
+    COS     shift, and go to state 13
+    ACOS    shift, and go to state 14
+    COSH    shift, and go to state 15
+    TAN     shift, and go to state 16
+    ATAN    shift, and go to state 17
+    TANH    shift, and go to state 18
+    LOG     shift, and go to state 19
+    LN      shift, and go to state 20
+    SQRT    shift, and go to state 21
+    SQURE   shift, and go to state 22
+    CUBE    shift, and go to state 23
+    EXIT    shift, and go to state 24
+    EXP     shift, and go to state 25
+    CEIL    shift, and go to state 26
+    FLOOR   shift, and go to state 27
+    ROUND   shift, and go to state 28
+    '('     shift, and go to state 29
+
+    expr    go to state 87
+    number  go to state 32
+
+
+State 64
+
+    5 stat: LETTER '=' expr .
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+
+    $default  reduce using rule 5 (stat)
+
+
+State 65
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   14     | SIN '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 88
+
+
+State 66
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   15     | ASIN '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 89
+
+
+State 67
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   16     | SINH '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 90
+
+
+State 68
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   17     | COS '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 91
+
+
+State 69
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   18     | ACOS '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 92
+
+
+State 70
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   19     | COSH '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 93
+
+
+State 71
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   20     | TAN '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 94
+
+
+State 72
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   21     | ATAN '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 95
+
+
+State 73
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   22     | TANH '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 96
+
+
+State 74
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   27     | LOG '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 97
+
+
+State 75
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   28     | LN '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 98
+
+
+State 76
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   29     | SQRT '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 99
+
+
+State 77
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   30     | SQURE '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 100
+
+
+State 78
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   31     | CUBE '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 101
+
+
+State 79
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   23     | EXP '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 102
+
+
+State 80
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   24     | CEIL '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 103
+
+
+State 81
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   25     | FLOOR '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 104
+
+
+State 82
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   26     | ROUND '(' expr . ')'
+   32     | expr . '/' expr
+
+    '+'  shift, and go to state 60
+    '-'  shift, and go to state 61
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+    ')'  shift, and go to state 105
+
+
+State 83
+
+    9 expr: '(' expr ')' .
+
+    $default  reduce using rule 9 (expr)
+
+
+State 84
+
+    6 expr: expr . '+' expr
+    6     | expr '+' expr .
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   32     | expr . '/' expr
+
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+
+    $default  reduce using rule 6 (expr)
+
+
+State 85
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    7     | expr '-' expr .
+    8     | expr . '*' expr
+   32     | expr . '/' expr
+
+    '*'  shift, and go to state 62
+    '/'  shift, and go to state 63
+
+    $default  reduce using rule 7 (expr)
+
+
+State 86
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+    8     | expr '*' expr .
+   32     | expr . '/' expr
+
+    $default  reduce using rule 8 (expr)
+
+
+State 87
+
+    6 expr: expr . '+' expr
+    7     | expr . '-' expr
+    8     | expr . '*' expr
+   32     | expr . '/' expr
+   32     | expr '/' expr .
+
+    $default  reduce using rule 32 (expr)
+
+
+State 88
+
+   14 expr: SIN '(' expr ')' .
+
+    $default  reduce using rule 14 (expr)
+
+
+State 89
+
+   15 expr: ASIN '(' expr ')' .
+
+    $default  reduce using rule 15 (expr)
+
+
+State 90
+
+   16 expr: SINH '(' expr ')' .
+
+    $default  reduce using rule 16 (expr)
+
+
+State 91
+
+   17 expr: COS '(' expr ')' .
+
+    $default  reduce using rule 17 (expr)
+
+
+State 92
+
+   18 expr: ACOS '(' expr ')' .
+
+    $default  reduce using rule 18 (expr)
+
+
+State 93
+
+   19 expr: COSH '(' expr ')' .
+
+    $default  reduce using rule 19 (expr)
+
+
+State 94
+
+   20 expr: TAN '(' expr ')' .
+
+    $default  reduce using rule 20 (expr)
+
+
+State 95
+
+   21 expr: ATAN '(' expr ')' .
+
+    $default  reduce using rule 21 (expr)
+
+
+State 96
+
+   22 expr: TANH '(' expr ')' .
+
+    $default  reduce using rule 22 (expr)
+
+
+State 97
+
+   27 expr: LOG '(' expr ')' .
+
+    $default  reduce using rule 27 (expr)
+
+
+State 98
+
+   28 expr: LN '(' expr ')' .
+
+    $default  reduce using rule 28 (expr)
+
+
+State 99
+
+   29 expr: SQRT '(' expr ')' .
+
+    $default  reduce using rule 29 (expr)
+
+
+State 100
+
+   30 expr: SQURE '(' expr ')' .
+
+    $default  reduce using rule 30 (expr)
+
+
+State 101
+
+   31 expr: CUBE '(' expr ')' .
+
+    $default  reduce using rule 31 (expr)
+
+
+State 102
+
+   23 expr: EXP '(' expr ')' .
+
+    $default  reduce using rule 23 (expr)
+
+
+State 103
+
+   24 expr: CEIL '(' expr ')' .
+
+    $default  reduce using rule 24 (expr)
+
+
+State 104
+
+   25 expr: FLOOR '(' expr ')' .
+
+    $default  reduce using rule 25 (expr)
+
+
+State 105
+
+   26 expr: ROUND '(' expr ')' .
+
+    $default  reduce using rule 26 (expr)

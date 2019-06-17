@@ -1,0 +1,25 @@
+Eric Blasko
+CSE570
+Dr. Gomez
+3/1/2019
+
+
+1.	Strings of 0's and 1's with unequal numbers of 0's and 1's.
+
+	This grammar has shift/reduce conflicts in I4,I5,I6, and I9. In each of these states, there is a combination of
+	reduceable states and shiftable states. Since there are two different options, the parser will not know what to
+	do and will require a tie breaking decision to complete. Thus, this is not an SLR grammar
+
+2. 	Strings of 0's and 1's that are palindromes (the second half of the string is the reverse of the first half.)
+
+	From the output for grammar2, we can see that there are shift/reduce conflicts in both states I3 and I4.
+	This is becuase there are instance such as E->0.I0 and E->0. This will cause a problem were the system
+	will not no whether the grammar was completed resulting in a reduction, or if one is continuing which
+	requires a shift. Thus, this is not an SLF grammar
+
+3.	Strings of 0's and 1's of the form xx
+
+	Assuming that xx means combinations such as 001 001 or 110 110, this grammar can not be done. This is because
+	the first production would need to be S->XX. X would then produce any combination of 1's and 0's, but there
+	is no way of guarenteeing that the second X will produce an exact copy. Thus this is not a SLR grammar. 
+

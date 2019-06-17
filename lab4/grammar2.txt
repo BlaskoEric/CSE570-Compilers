@@ -1,0 +1,78 @@
+Script started on 2019-03-05 10:15:11-08:00
+]0;005670557@csusb.edu@csevnc:~/cse570/lab4[005670557@csusb.edu@csevnc lab4]$ ./closure
+Augmented Grammar
+'->S
+S->E
+E->0E0
+E->0I0
+E->1E1
+E->1I1
+I->1
+I->0
+I->e
+
+First Sets
+First(S) = {0,1}
+First(E) = {0,1}
+First(I) = {0,1,e}
+
+Follow Sets
+Follow(S) = {$}
+Follow(E) = {0,1}
+Follow(I) = {0,1}
+
+Closures and Gotos
+I0:
+	'->.S                goto(I1,S)
+	S->.E                goto(I2,E)
+	E->.0E0              goto(I3,0)
+	E->.0I0             
+	E->.1E1              goto(I4,1)
+	E->.1I1             
+I1:
+	'->S.               
+I2:
+	S->E.               
+I3:
+	E->0.E0              goto(I5,E)
+	E->0.I0              goto(I6,I)
+	E->.0E0              goto(I3,0)
+	E->.0I0             
+	E->.1E1              goto(I4,1)
+	E->.1I1             
+	I->.1               
+	I->.0               
+	I->.e                goto(I7,e)
+	I->0.               
+I4:
+	E->1.E1              goto(I8,E)
+	E->1.I1              goto(I9,I)
+	I->1.               
+	E->.0E0              goto(I3,0)
+	E->.0I0             
+	E->.1E1              goto(I4,1)
+	E->.1I1             
+	I->.1               
+	I->.0               
+	I->.e                goto(I7,e)
+I5:
+	E->0E.0              goto(I10,0)
+I6:
+	E->0I.0              goto(I11,0)
+I7:
+	I->e.               
+I8:
+	E->1E.1              goto(I12,1)
+I9:
+	E->1I.1              goto(I13,1)
+I10:
+	E->0E0.             
+I11:
+	E->0I0.             
+I12:
+	E->1E1.             
+I13:
+	E->1I1.             
+]0;005670557@csusb.edu@csevnc:~/cse570/lab4[005670557@csusb.edu@csevnc lab4]$ exit
+
+Script done on 2019-03-05 10:15:17-08:00
